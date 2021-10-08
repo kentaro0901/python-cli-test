@@ -10,16 +10,13 @@ parser = argparse.ArgumentParser(
     usage='how to use', # 利用方法
     description='test cli', # 説明
 )
-parser.add_argument('arg1', help='help')
+parser.add_argument('-u', '--upper', help='to upper', action='store_true') # 設定するとtrue
+# parser.add_argument('arg1', help='help') # 位置引数
 
-def main(argv=sys.argv):
-    if len(argv) == 1:
-        parser.parse_args(["-h"])
-        sys.exit(0)
-    
+def main(argv=sys.argv):    
     args = parser.parse_args()
 
-    if args.arg1 == 'u':
+    if args.upper:
         logger.info('Hello World!')
     else:
         logger.info('hello world!')
